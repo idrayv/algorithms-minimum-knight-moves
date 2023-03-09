@@ -12,18 +12,18 @@
         }
 
         /// <summary>
-        /// Vertical position, from bottom to top.
+        /// Vertical position, from bottom to top
         /// </summary>
         public int V { get; set; }
 
         /// <summary>
-        /// Horizontal position, from left to right.
+        /// Horizontal position, from left to right
         /// </summary>
         public int H { get; set; }
     }
 
     /// <summary>
-    /// 
+    /// Represent three of possible moves of the knight, the root node is the initial knight position
     /// </summary>
     internal class MovementTree
     {

@@ -73,7 +73,7 @@ namespace KnightMoveCalculator
             {
                 throw new ArgumentException("Coordinates should be within a board!");
             }
-            
+
             var currentMoveCounter = 1;
             var chackmate = false;
 
@@ -90,6 +90,7 @@ namespace KnightMoveCalculator
                 return currentMoveCounter;
             }
 
+            // In case no one from first possible moves is victory, let's continue search recursively
             CalculateMinimumMoves(firstTreeLayer, queenPosition, ref currentMoveCounter, ref chackmate);
 
             return currentMoveCounter;
@@ -140,12 +141,14 @@ namespace KnightMoveCalculator
         {
             Console.WriteLine("Move combination: ");
             var sb = new StringBuilder();
-            sb.AppendLine("V:" + position?.CurrentKnightPosition.V + " H:" + position?.CurrentKnightPosition.H);
+            sb.AppendLine($"V:{position?.CurrentKnightPosition.V} H:{position?.CurrentKnightPosition.H}");
+
             while (position?.Parent != null)
             {
                 position = position.Parent;
-                sb.AppendLine("V:" + position?.CurrentKnightPosition.V + " H:" + position?.CurrentKnightPosition.H);
+                sb.AppendLine($"V:{position?.CurrentKnightPosition.V} H:{position?.CurrentKnightPosition.H}");
             }
+
             Console.Write(sb);
         }
     }
