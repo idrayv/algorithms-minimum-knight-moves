@@ -1,34 +1,47 @@
 ﻿namespace KnightMoveCalculator
 {
-    public struct Point
+    /// <summary>
+    /// Represents cell on chess board
+    /// </summary>
+    public struct Cell
     {
-        public Point(int v, int h)
+        public Cell(int v, int h)
         {
             this.V = v;
             this.H = h;
         }
 
+        /// <summary>
+        /// Vertical position, from bottom to top.
+        /// </summary>
         public int V { get; set; }
+
+        /// <summary>
+        /// Horizontal position, from left to right.
+        /// </summary>
         public int H { get; set; }
     }
 
-    class PointTree
+    /// <summary>
+    /// 
+    /// </summary>
+    internal class MovementTree
     {
-        public Point Point;
-        public List<PointTree> Children = new();
-        public PointTree? Parent { get; private set; }
+        public Cell CurrentKnightPosition;
+        public List<MovementTree> PossibleNextMove = new();
+        public MovementTree? Parent { get; private set; }
 
-        public PointTree(Point point)
+        public MovementTree(Cell position)
         {
-            this.Point = point;
-            Children = new List<PointTree>();
+            this.CurrentKnightPosition = position;
+            PossibleNextMove = new List<MovementTree>();
             Parent = null;
         }
 
-        public PointTree AddChild(Point point)
+        public MovementTree AddPossibleMove(Cell position)
         {
-            var node = new PointTree(point) { Parent = this };
-            Children.Add(node);
+            var node = new MovementTree(position) { Parent = this };
+            PossibleNextMove.Add(node);
             return node;
         }
     }
