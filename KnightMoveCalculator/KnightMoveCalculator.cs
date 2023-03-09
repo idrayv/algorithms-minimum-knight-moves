@@ -12,7 +12,7 @@ namespace KnightMoveCalculator
         };
 
         /// <summary>
-        /// Cheching if the provided move coordinights is going to lead outside the board
+        /// Checking if the provided move coordinates is going to lead outside the board
         /// </summary>
         /// <param name="position">Current position cell</param>
         /// <param name="moveX">Potential move vertical coordinate</param>
@@ -45,7 +45,7 @@ namespace KnightMoveCalculator
         }
 
         /// <summary>
-        /// Checks if any of childs of current position in tree will beat the queen, returns victory combination in case there is such
+        /// Checks if any of childs of current position in tree might beat the queen, returns victory combination in case there is such
         /// </summary>
         /// <param name="currentPosition">The current position in tree</param>
         /// <param name="queenPosition">Queen coordinates</param>
@@ -63,7 +63,7 @@ namespace KnightMoveCalculator
         }
 
         /// <summary>
-        /// Function calculates the minimum number of moves needed for a knight to beat the queen
+        /// Calculates the minimum number of moves needed for a knight to beat the queen
         /// </summary>
         /// <param name="knightPosition">Initial knight position</param>
         /// <param name="queenPosition">Initial queen position</param>
@@ -90,7 +90,7 @@ namespace KnightMoveCalculator
                 return currentMoveCounter;
             }
 
-            // In case no one from first possible moves is victory, let's continue search recursively
+            // In case no one moves from first layer is victory one, let's continue search recursively
             CalculateMinimumMoves(firstTreeLayer, queenPosition, ref currentMoveCounter, ref chackmate);
 
             return currentMoveCounter;
@@ -134,7 +134,7 @@ namespace KnightMoveCalculator
         }
 
         /// <summary>
-        /// Writing to the console path representation for current position to the very start of the tree
+        /// Writing path representation from the current position to the very start of the tree to the console
         /// </summary>
         /// <param name="position">Current position we should start from</param>
         private static void PrintPathToRoot(MovementTree? position)
